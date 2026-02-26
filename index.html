@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inscripción a Taller UTN — Formulario completo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="page">
+    <header class="hero">
+      <div>
+        <p class="tag">UTN · Inscripción</p>
+        <h1>Formulario de inscripción a taller</h1>
+        <p class="subtitle">
+          Complete la información para reservar su cupo. Los campos con <span class="req">*</span> son obligatorios.
+        </p>
+      </div>
+
+      <div class="heroCard" aria-hidden="true">
+        <div class="chip">2026</div>
+        <p class="muted">Demostración de controles HTML</p>
+        <div class="miniGrid">
+          <span>Texto</span><span>Fecha</span><span>Archivo</span><span>Rango</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="card">
+      <form action="/inscripcion" method="post" enctype="multipart/form-data" autocomplete="on">
+        <!-- hidden -->
+        <input type="hidden" name="form_id" value="inscripcion-taller-2026" />
+
+        <fieldset>
+          <legend>Datos personales</legend>
+
+          <div class="grid">
+            <div class="field">
+              <label for="nombre">Nombre completo <span class="req">*</span></label>
+              <input id="nombre" name="nombre" type="text" placeholder="Ej. Juan Pablo Pérez" required minlength="3" />
+              <small>Tal como aparece en su identificación.</small>
+            </div>
+
+            <div class="field">
+              <label for="cedula">Cédula / Identificación <span class="req">*</span></label>
+              <input id="cedula" name="cedula" type="text" placeholder="Ej. 1-2345-6789" required
+                     pattern="^[0-9\-]{6,}$" inputmode="numeric" />
+              <small>Acepte números y guiones.</small>
+            </div>
+
+            <div class="field">
+              <label for="correo">Correo institucional <span class="req">*</span></label>
+              <input id="correo" name="correo" type="email" placeholder="nombre@utn.ac.cr" required />
+            </div>
+
+            <div class="field">
+              <label for="telefono">Teléfono <span class="req">*</span></label>
+              <input id="telefono" name="telefono" type="tel" placeholder="Ej. 8888-8888" required
+                     inputmode="tel" />
+            </div>
+
+            <div class="field">
+              <label for="usuario">Usuario (solo lectura)</label>
+              <input id="usuario" name="usuario" type="text" value="estudiante_2026" readonly />
+              <small>Ejemplo de <code>readonly</code>.</small>
+            </div>
+
+            <div class="field">
+              <label for="password">Contraseña (para portal) <span class="req">*</span></label>
+              <input id="password" name="password" type="password" required minlength="8"
+                     placeholder="Mínimo 8 caracteres" />
+              <small>No use datos personales obvios.</small>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label for="sitio">Portafolio (URL)</label>
+              <input id="sitio" name="sitio" type="url" placeholder="https://..." />
+            </div>
+
+            <div class="field">
+              <label for="nacimiento">Fecha de nacimiento</label>
+              <input id="nacimiento" name="nacimiento" type="date" />
+            </div>
+
+            <div class="field">
+              <label for="color">Color de gafete (color picker)</label>
+              <input id="color" name="color_gafete" type="color" value="#1b77ff" />
+            </div>
+
+            <div class="field">
+              <label for="foto">Foto para gafete (archivo)</label>
+              <input id="foto" name="foto" type="file" accept="image/*" />
+              <small>Formatos sugeridos: JPG/PNG.</small>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Selección del taller</legend>
+
+          <div class="grid">
+            <div class="field">
+              <label for="taller">Taller <span class="req">*</span></label>
+              <select id="taller" name="taller" required>
+                <option value="" selected disabled>Seleccione…</option>
+                <optgroup label="Frontend">
+                  <option value="html-css">HTML + CSS desde cero</option>
+                  <option value="js-dom">JavaScript y DOM</option>
+                </optgroup>
+                <optgroup label="Backend">
+                  <option value="node">Node.js básico</option>
+                  <option value="api">APIs REST</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="sede">Sede / Campus</label>
+              <input id="sede" name="sede" list="sedes" placeholder="Escriba o seleccione…" />
+              <datalist id="sedes">
+                <option value="Guanacaste"></option>
+                <option value="San Carlos"></option>
+                <option value="San José"></option>
+                <option value="Pacífico"></option>
+              </datalist>
+              <small>Ejemplo de <code>datalist</code>.</small>
+            </div>
+
+            <div class="field">
+              <label for="turno">Turno</label>
+              <select id="turno" name="turno">
+                <option value="manana">Mañana</option>
+                <option value="tarde">Tarde</option>
+                <option value="noche" selected>Noche</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="grupo">Grupo</label>
+              <input id="grupo" name="grupo" type="number" min="1" max="20" step="1" value="1" />
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label for="inicio">Fecha de inicio preferida</label>
+              <input id="inicio" name="inicio" type="datetime-local" />
+            </div>
+
+            <div class="field">
+              <label for="hora">Hora preferida</label>
+              <input id="hora" name="hora" type="time" />
+            </div>
+
+            <div class="field">
+              <label for="mes">Mes estimado (month)</label>
+              <input id="mes" name="mes" type="month" />
+            </div>
+
+            <div class="field">
+              <label for="semana">Semana estimada (week)</label>
+              <input id="semana" name="semana" type="week" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Preferencias y validaciones</legend>
+
+          <div class="grid">
+            <div class="field">
+              <label>Nivel actual <span class="req">*</span></label>
+              <div class="options" role="radiogroup" aria-label="Nivel actual">
+                <label class="pill">
+                  <input type="radio" name="nivel" value="novato" required />
+                  Novato
+                </label>
+                <label class="pill">
+                  <input type="radio" name="nivel" value="intermedio" />
+                  Intermedio
+                </label>
+                <label class="pill">
+                  <input type="radio" name="nivel" value="avanzado" />
+                  Avanzado
+                </label>
+              </div>
+              <small>Ejemplo de <code>radio</code> + <code>required</code>.</small>
+            </div>
+
+            <div class="field">
+              <label>Intereses (checkbox)</label>
+              <div class="options">
+                <label class="pill">
+                  <input type="checkbox" name="intereses[]" value="ux" />
+                  UX/UI
+                </label>
+                <label class="pill">
+                  <input type="checkbox" name="intereses[]" value="css" />
+                  CSS
+                </label>
+                <label class="pill">
+                  <input type="checkbox" name="intereses[]" value="js" />
+                  JavaScript
+                </label>
+                <label class="pill">
+                  <input type="checkbox" name="intereses[]" value="seguridad" />
+                  Seguridad
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label for="cupos">Prioridad de cupo (range)</label>
+              <input id="cupos" name="prioridad" type="range" min="1" max="5" value="3" />
+              <div class="hintRow">
+                <span>1 (baja)</span><span>5 (alta)</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Progreso de preregistro (progress)</label>
+              <progress value="70" max="100">70%</progress>
+              <small>Ejemplo visual de progreso.</small>
+            </div>
+
+            <div class="field">
+              <label>Disponibilidad de computadoras (meter)</label>
+              <meter min="0" max="40" low="10" high="30" optimum="35" value="28">
+                28 de 40
+              </meter>
+              <small>Ejemplo de indicador (<code>meter</code>).</small>
+            </div>
+
+            <div class="field">
+              <label for="descuento">Código de descuento</label>
+              <input id="descuento" name="descuento" type="text" placeholder="Ej. UTN-2026" />
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label for="comentarios">Comentarios / necesidades</label>
+              <textarea id="comentarios" name="comentarios" rows="4"
+                        placeholder="Ej. Requiero accesibilidad, horario especial, etc."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="busqueda">Búsqueda interna (search)</label>
+              <input id="busqueda" name="busqueda" type="search" placeholder="Buscar talleres, temas..." />
+              <small>Ejemplo de <code>type="search"</code>.</small>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label for="calculado">Monto estimado (output)</label>
+              <div class="outputWrap">
+                <span class="badge">₡</span>
+                <output id="calculado" name="monto">0</output>
+              </div>
+              <small>Ejemplo de <code>output</code> (puede calcularse con JS).</small>
+            </div>
+
+            <div class="field">
+              <label for="deshabilitado">Campo deshabilitado</label>
+              <input id="deshabilitado" name="deshabilitado" type="text" value="No editable" disabled />
+              <small>Ejemplo de <code>disabled</code>.</small>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="compact">
+          <legend>Consentimiento</legend>
+          <label class="checkRow">
+            <input type="checkbox" name="terminos" required />
+            Acepto los términos y autorizo el uso de mis datos para fines académicos. <span class="req">*</span>
+          </label>
+        </fieldset>
+
+        <div class="actions">
+          <button type="submit" class="btn primary">Enviar inscripción</button>
+          <button type="reset" class="btn ghost">Limpiar</button>
+          <button type="button" class="btn" onclick="alert('Vista previa (demo).')">Vista previa</button>
+        </div>
+
+        <p class="footerNote">
+          Al enviar, se realizará la validación HTML5 automática (<code>required</code>, <code>pattern</code>, etc.).
+        </p>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
